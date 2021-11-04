@@ -25,6 +25,16 @@ async function updateSubscription(id, subscription) {
 async function updateAvatarUrl(id, url) {
   return await User.updateOne({ _id: id }, { avatarURL: url });
 }
+async function findUserByVerificationToken(verificationToken) {
+  return await User.findOne({ verificationToken });
+}
+
+async function updateVerificationToken(id, verified, verificationToken) {
+  return await User.findOneAndUpdate(
+    { _id: id },
+    { verified, verificationToken },
+  );
+}
 
 module.exports = {
   createUser,
@@ -33,4 +43,6 @@ module.exports = {
   findById,
   updateSubscription,
   updateAvatarUrl,
+  findUserByVerificationToken,
+  updateVerificationToken,
 };
