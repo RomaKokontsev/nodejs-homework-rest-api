@@ -7,7 +7,7 @@ const guard = (req, res, next) => {
     const token = req.get('Authorization')?.split(' ')[1];
 
     if (!user || err || token !== user.token) {
-      return res.status(HttpCode.FORBIDDEN).json({
+      return res.status(HttpCode.UNAUTHORIZED).json({
         status: Status.ERROR,
         code: HttpCode.UNAUTHORIZED,
         data: 'Unauthorized',

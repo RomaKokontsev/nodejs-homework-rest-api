@@ -22,5 +22,6 @@ router.patch(
   [guard, validate.updateSubscription],
   usersController.updateSubscription,
 );
+router.get('/verify/:verificationToken', usersController.verifyEmail);
 
 module.exports = router;
